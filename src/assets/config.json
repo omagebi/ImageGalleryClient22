@@ -1,0 +1,12 @@
+{
+  "appName": "Archive Module",
+  "appVersion": "1.0.0",
+  "apiEndpoint": "https://api.example.com",
+  "maxItemsPerPage": 10,
+  "logLevel": "debug",
+  "screenDisplay": "Good & Healthy Life",
+  "clientName": "Sapid Logistics, Lagos",
+  "clientID": "SPD-L",
+  "clientLogo": "assets/img/MedSymbol3.png",
+  "enableAnalytics": true
+}

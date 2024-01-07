@@ -1,0 +1,19 @@
+.dashboard {
+  margin: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-md-6 {
+  flex: 0 0 calc(50% - 10px);
+  margin-right: 10px;
+}
+
+.widget {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}

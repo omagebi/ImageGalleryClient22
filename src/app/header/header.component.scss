@@ -1,0 +1,53 @@
+@media screen and (min-width: 768px) {
+  /* Styles for larger screens */
+  .my-text {
+      font-size: 16px;
+      display: flex; /* Make the container a flex container */
+      align-items: center; /* Center items vertically */
+      gap: 15px; /* Add space between items */
+  }
+
+  .logo span {
+      margin-right: 15px; /* Add space between the text and the buttons */
+  }
+}
+
+.header {
+  height: 50px;
+  padding: 20px 50px;
+  background-color: rgb(1, 38, 69);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 5px 5px 5px #939393;
+
+  .logo {
+      font-weight: bold;
+      font-size: 1.25rem;
+  }
+
+  a {
+    color: #fff; /* Set text color to white */
+    text-decoration: none; /* Remove underline */
+    margin-right: 15px; /* Add space between links */
+}
+
+  .user {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.25rem;
+
+      .user-image {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: 2px solid #fff;
+          margin-left: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+      }
+  }
+}
