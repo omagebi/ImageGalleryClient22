@@ -77,6 +77,8 @@ export class PhotoComponent implements OnInit {
     //const results: string[] =['femi','omage','babafemi'];
     return this?.http.get<IFullName[]>(`https://localhost:7293/api/imagegallery/search?name=${term}`).pipe(
       map(results => results.map(result => result.FullName + ' [' +  result.PNo.replace('/','-') + ']' ))
+      // .map(term => term.length < 2 ? []
+      //   : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
     );
   }
 
