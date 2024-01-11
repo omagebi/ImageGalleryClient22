@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { catchError, debounceTime, distinctUntilChanged, finalize, map, switchMap } from 'rxjs/operators';
+import { catchError, debounceTime, distinctUntilChanged, filter, finalize, map, switchMap, tap } from 'rxjs/operators';
 import { Photo, PhotoService } from '../photo.service';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -14,6 +14,12 @@ export interface IFullName {
   PNo: string
 }
 
+export interface IResult{
+  results: IFullName[];
+  totalCount: number;
+  currentPage: number;
+  pageSize: number
+}
 @UntilDestroy()
 @Component({
   selector: 'app-photo',
@@ -68,17 +74,29 @@ export class PhotoComponent implements OnInit {
     text$.pipe(
       debounceTime(500), // debounce time to wait after each keystroke
       distinctUntilChanged(), // only emit if the value has changed
-      switchMap(term => this.getSearchResults(term)) // switch to a new observable for each term
+      tap(term => console.log('Searching for:', term)), // Log search terms for debugging      // switchMap(term => this.getSearchResults(term)) // switch to a new observable for each term
+      switchMap(term =>
+        term.length > 2
+          ? this.getSearchResults(term).pipe(
+              map(results => results.slice(0, 10))
+            )
+          : of([]) // Emit an empty array if term is less than 3 characters
+      )
     );
 
   getSearchResults(term: string): Observable<string[]> {
-    // Implement your logic to fetch and return search results based on the input term
-    // This could be an HTTP request or any other asynchronous operation
-    //const results: string[] =['femi','omage','babafemi'];
-    return this?.http.get<IFullName[]>(`https://localhost:7293/api/imagegallery/search?name=${term}`).pipe(
+      // Implement your logic to fetch and return search results based on the input term
+      return this?.http.get<IResult>(`https://localhost:7293/api/imagegallery/search?name=${term}`).pipe(
+      map(resp => resp.results.map(result => result.FullName + ' [' +  result.PNo.replace('/','-') + ']' ))
+    );
+  }
+
+    getSearchResults2(term: string): Observable<string[]> {
+      // Implement your logic to fetch and return search results based on the input term
+      // This could be an HTTP request or any other asynchronous operation
+      //const results: string[] =['femi','omage','babafemi'];
+      return this?.http.get<IFullName[]>(`https://localhost:7293/api/imagegallery/search?name=${term}`).pipe(
       map(results => results.map(result => result.FullName + ' [' +  result.PNo.replace('/','-') + ']' ))
-      // .map(term => term.length < 2 ? []
-      //   : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
     );
   }
 
