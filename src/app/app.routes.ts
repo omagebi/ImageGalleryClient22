@@ -11,7 +11,7 @@ export const routes: Routes = [
   {
     path: 'image', component: GalleryComponent, children: [
       { path: 'upload', component: PhotoComponent },
-      { path: 'list', component: PhotoListComponent }
+      { path: ':id/list', component: PhotoListComponent }
     ]
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }

@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  id: string = '00';
+
   constructor(public appService: AppService) { }
 
   ngOnInit(): void {
@@ -20,6 +22,10 @@ export class HeaderComponent implements OnInit {
     // this.appService.appName = this.appService.get('appName');
     // this.appService.clientName = this.appService.get('clientName');
     // this.appService.clientLogo = this.appService.get('clientLogo');
+
+  }
+
+  Logout() {
 
   }
 

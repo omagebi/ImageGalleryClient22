@@ -32,6 +32,7 @@ export interface IResult{
   styleUrls: ['./photo.component.css'],
 })
 export class PhotoComponent implements OnInit {
+
   imgSrc: string = '';
   idx = 0;
   selectedImage: any = null;

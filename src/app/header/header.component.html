@@ -1,29 +1,135 @@
-<div class="header">
+
+<!-- <div class="container-fluid mt-2">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 mx-auto">
+
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">{{ appService.appName }}</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav">
+
+                  <li class="nav-item dropdown" id="myDropdown1">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                      File
+                    </a>
+                    <ul class="dropdown-menu ">
+
+                      <li>
+                        <a class="dropdown-item" routerLink="consignees" routerLinkActive="active">
+                          Company | Clients
+                        </a>
+                      </li>
+
+                      <li>
+                        <a class="dropdown-item" routerLink="consigneegroups" routerLinkActive="active">
+                          Client Group
+                        </a>
+                      </li>
+
+                      <li>
+                        <a class="dropdown-item" routerLink="billitems" routerLinkActive="active">
+                          Bill Items
+                        </a>
+                      </li>
+
+
+                    </ul>
+                  </li>
+
+                  <li class="nav-item dropdown" id="myDropdown2">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                      Activities
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#" routerLink="invoices" routerLinkActive="active"> Raise Normal
+                          Invoice </a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li class="nav-item active">
+                    <a class="nav-link" routerLink="/Reports" routerLinkActive="active">Reports
+                    </a>
+                  </li>
+
+
+                </ul>
+
+                <ul class="navbar-nav pull-right">
+                  <li class="nav-item active">
+                    <a class="nav-link" routerLink="#" (click)="Logout()">
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </nav>
+        </div>
+
+      </div>
+
+      <div class="container-fluid mt-2">
+        <div class="row">
+          <div class="col-md-12  mx-auto">
+            <div class="card h-100 border-primary">
+              <div class="sm-jumbotron center-align">
+                <h2>Data Entry</h2>
+              </div>
+
+
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+
+
+<!-- <div class="header">
   <div class="logo my-text">
     <span>{{appService.appName}}</span>
     <a href="javascript:void(0);" routerLink="/home">Home</a>
-    <a class="nav-link" routerLink="/uploadimages">Upload</a>
-    <a href="javascript:void(0);" routerLink="/viewimages">View Images</a>
+    <a class="nav-link" routerLink="/image/upload">Upload</a>
+    <a href="javascript:void(0);" routerLink="/image/list">ImageList</a>
   </div>
   <div class="user">
     <div class="user-name">{{appService.clientName}}</div>
     <div class="user-image"><img alt="" [src]="appService.clientLogo" class="img-fluid"></div>
   </div>
-</div>
-<!--
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+</div> -->
+
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary"> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">
+      <img src="assets/img/new_image.jpg" class="headerlogo" />
+      Image Gallery</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/uploadimages">Upload</a>
+          <a class="nav-link active" routerLink="/image/upload">Upload</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active" [routerLink]="['/image', id, 'list']">Photo List</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -36,9 +142,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -46,4 +150,4 @@
       </form>
     </div>
   </div>
-</nav> -->
+</nav>
