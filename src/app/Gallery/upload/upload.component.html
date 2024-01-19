@@ -1,0 +1,67 @@
+<div class="card container mt-3" style="width:25rem">
+  <div class="card-body">
+    <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+      <!-- <div class="form-group mb-3 mt-3 ">
+        <label for="Category">FullName***</label>
+        <input list="FullNames" id="FullName" formControlName="FullName" #itmX (blur)="updateFields(itmX.value)"
+          placeholder="Select a Name" class="form-control"
+          [ngClass]="{'is-invalid': isSubmitted && formControls['FullName'].errors}">
+        <datalist id="FullNames">
+          <option *ngFor="let item of itemList" value="{{item.FullName}}">{{item.FullName}}</option>
+        </datalist>
+        <div class="invalid-feedback" *ngIf="isSubmitted && formControls['FullName'].errors">
+          <label *ngIf="formControls['FullName'].errors['required']">This field is required.</label>
+        </div>
+      </div> -->
+
+      <!-- <input id="typeahead-http"
+      type="text" class="form-control mx-sm-3"
+      [class.is-invalid]="searchFailed"
+      formControlName="FullName"
+      [ngbTypeahead]="search"
+      [inputFormatter]="formatter"
+      [resultFormatter]="formatter"
+      placeholder="Product search" /> -->
+
+      <label for="FullName">FullName</label>
+      <input type="text" id="FullName" formControlName="FullName" class="form-control mb-3" [ngbTypeahead]="service.search"
+        *ngIf="formTemplate && formTemplate.get('FullName')" />
+
+
+      <div class="text-center clickme">
+        <img [src]="imgSrc" alt="upload image" width="350px" height="250px" (click)="fileUploader.click()">
+      </div>
+      <div class="form-group">
+        <label>Select file to upload</label>
+        <input type="file" accept="image/*" multiple class="form-control" #fileUploader formControlName="ImageUrl"
+          (change)="showPreview($event)">
+        <div class="text-danger" *ngIf="isSubmitted && formControls['ImageUrl'].errors?.['required']">This field is
+          required.
+        </div>
+      </div>
+
+      <!-- <img *ngFor="let url of urls" [src]="url" alt="upload image" width="350px" height="250px">
+        <br>
+        <input type="file" multiple (change)="showPreviewMultiple($event)"> -->
+
+
+      <div class="form-group mb-3">
+        <select formControlName="Category" class="form-control">
+          <option value="CaseNote">CaseNote</option>
+          <option value="Invoice">Invoice</option>
+          <option value="Receipt">Receipt</option>
+        </select>
+      </div>
+      <div class="form-group mb-3">
+        <input class="form-control " formControlName="Remarks" placeholder="Remarks">
+        <div class="text-danger" *ngIf="isSubmitted && formControls['Remarks'].errors?.['required']">This field is
+          required.
+        </div>
+      </div>
+      <div class="mx-auto">
+        <a routerLink="/photo/list" class="btn btn-primary me-2">Go To Gallery</a>
+        <button type="submit" class="btn btn-success ">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

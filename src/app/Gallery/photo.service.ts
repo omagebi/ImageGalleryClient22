@@ -4,6 +4,21 @@ import { Router } from '@angular/router';
 import { environment } from '../app.config';
 import {Observable, debounceTime, distinctUntilChanged, map, of, switchMap, tap } from 'rxjs';
 
+
+export interface IFullName {
+  FullName: string;
+  PNo: string;
+  ImageURL: string;
+}
+
+export interface IResult{
+  results: IFullName[];
+  totalCount: number;
+  currentPage: number;
+  pageSize: number
+}
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,25 +28,48 @@ export class PhotoService {
   imageDetailList: any;
   firebase: any;
 
-  appURL = 'https://localhost:7293/api/imagegallery' //environment.appURL;
-  // baseUrl = `${environment.appURL}/Upload2`;
+  appURL = environment.appURL; //'https://localhost:7293/api/imagegallery' //
+  baseUrl = `${environment.appURL}/Upload2`;
 
-   search2(text$: Observable<string>): Observable<string[]> {
-     return text$.pipe(
-       debounceTime(500),
-       distinctUntilChanged(),
-       switchMap(searchTerm => {
-         if (!searchTerm) {
-           return of([]); //as string[]); // return an empty array if searchTerm is falsy
-         }
-      const appSearch = `https://localhost:7293/api/imagegallery/search?name=${searchTerm}`; // adjust the query parameter as needed
-      // return of(['result1', 'result2']); // Replace this with your actual HTTP call
-         return this.http.get<string[]>(appSearch);
-        //  return this.getNames(appSearch);
-       })
-     );
+    getLinksByID(id: string,page: number=1,pageSize: number=10): Observable<IFullName[]> {
+      id = encodeURIComponent(id);
+      const url = `https://localhost:7293/api/imagegallery/${id}/list?page=${page}&pageSize=${pageSize}`;
+      return this.http.get<IResult>(url).pipe(
+        tap(res => console.log(res)),
+        map(resp => resp.results)  //.map(result => result.ImageURL + ' [' +  result.PNo.replace('/','-') + ']' )
+    );
+  }
 
-   }
+  search = (text$: Observable<string>):Observable<string[]> =>
+    text$.pipe(
+      debounceTime(500), // debounce time to wait after each keystroke
+      distinctUntilChanged(), // only emit if the value has changed
+      tap(term => console.log('Searching for:', term)), // Log search terms for debugging      // switchMap(term => this.getSearchResults(term)) // switch to a new observable for each term
+      switchMap(term =>
+        term.length > 2
+          ? this.getSearchResults(term).pipe(
+              map(results => results.slice(0, 10))
+            )
+          : of([]) // Emit an empty array if term is less than 3 characters
+      )
+    );
+
+  getSearchResults(term: string): Observable<string[]> {
+      // Implement your logic to fetch and return search results based on the input term
+      return this?.http.get<IResult>(`https://localhost:7293/api/imagegallery/search?name=${term}`).pipe(
+      map(resp => resp.results.map(result => result.FullName + ' [' +  result.PNo.replace('/','-') + ']' ))
+    );
+  }
+
+    getSearchResults2(term: string): Observable<string[]> {
+      // Implement your logic to fetch and return search results based on the input term
+      // This could be an HTTP request or any other asynchronous operation
+      //const results: string[] =['femi','omage','babafemi'];
+      return this?.http.get<IFullName[]>(`https://localhost:7293/api/imagegallery/search?name=${term}`).pipe(
+      map(results => results.map(result => result.FullName + ' [' +  result.PNo.replace('/','-') + ']' ))
+    );
+  }
+
 
     getNames(txt: string) :Observable<string[]>{
     return this.http.get<string[]>(txt);
@@ -74,6 +112,27 @@ export class PhotoService {
   insertImageDetailsX(imageDetails: any) {
     this.imageDetailList.push(imageDetails);
   }
+
+  //   search3(text$: Observable<string>): Observable<string[]> {
+  //   return text$.pipe(
+  //     debounceTime(300), // optional: debounce time to wait for user to stop typing
+  //     distinctUntilChanged(), // optional: only emit if the value has changed
+  //     switchMap((searchText: string) => {
+  //       if (!searchText || searchText.trim() === '') {
+  //         // If searchText is empty, return an observable with an empty array
+  //         return of(['']);
+  //       } else {
+  //         // Your actual search logic here
+  //         // For example, make an HTTP request to a search API
+  //         // Replace the following line with your actual search logic
+  //         return this?.http.get<string[]>(`https://localhost:7293/api/imagegallery/search?name=${searchText}`).pipe(
+  //           catchError(() => of([])) // Handle errors gracefully
+  //         );
+  //       }
+  //     })
+  //   );
+  // }
+
 }
 
 export class Photo {
