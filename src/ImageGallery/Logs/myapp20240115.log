@@ -1,0 +1,34 @@
+2024-01-15 07:53:23.802 +01:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-01-15 07:53:24.101 +01:00 [INF] Now listening on: https://localhost:7293
+2024-01-15 07:53:24.103 +01:00 [INF] Now listening on: http://localhost:5081
+2024-01-15 07:53:24.105 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-15 07:53:24.106 +01:00 [INF] Hosting environment: Development
+2024-01-15 07:53:24.107 +01:00 [INF] Content root path: C:\Users\Administrator\source\repos\ImageGallery2\ImageGalleryAPI2\ImageGallery
+2024-01-15 07:53:27.518 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2024-01-15 07:53:28.050 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 535.2474ms
+2024-01-15 07:53:28.096 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2024-01-15 07:53:28.159 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 62.7950ms
+2024-01-15 07:53:28.208 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2024-01-15 07:53:28.215 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 13760 application/javascript;+charset=utf-8 6.5900ms
+2024-01-15 07:53:28.425 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2024-01-15 07:53:28.588 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 163.3670ms
+2024-01-15 07:58:11.397 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/imagegallery/search?name=abi - -
+2024-01-15 07:58:11.405 +01:00 [INF] CORS policy execution successful.
+2024-01-15 07:58:11.415 +01:00 [INF] Executing endpoint 'HTTP: GET /api/imagegallery/search => GetFullName'
+2024-01-15 07:58:11.628 +01:00 [INF] Setting HTTP status code 200.
+2024-01-15 07:58:11.634 +01:00 [INF] Writing value of type '<>f__AnonymousType1`4' as Json.
+2024-01-15 07:58:11.653 +01:00 [INF] Executed endpoint 'HTTP: GET /api/imagegallery/search => GetFullName'
+2024-01-15 07:58:11.663 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/imagegallery/search?name=abi - - - 200 - application/json;+charset=utf-8 265.9396ms
+2024-01-15 07:58:18.749 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/imagegallery/search?name=abu - -
+2024-01-15 07:58:18.750 +01:00 [INF] CORS policy execution successful.
+2024-01-15 07:58:18.754 +01:00 [INF] Executing endpoint 'HTTP: GET /api/imagegallery/search => GetFullName'
+2024-01-15 07:58:18.764 +01:00 [INF] Setting HTTP status code 200.
+2024-01-15 07:58:18.765 +01:00 [INF] Writing value of type '<>f__AnonymousType1`4' as Json.
+2024-01-15 07:58:18.777 +01:00 [INF] Executed endpoint 'HTTP: GET /api/imagegallery/search => GetFullName'
+2024-01-15 07:58:18.781 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/imagegallery/search?name=abu - - - 200 - application/json;+charset=utf-8 32.0047ms
+2024-01-15 07:58:45.707 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7293/api/imagegallery/upload multipart/form-data;+boundary=----WebKitFormBoundarywqRJknmW4DPYLfBC 518209
+2024-01-15 07:58:45.709 +01:00 [INF] CORS policy execution successful.
+2024-01-15 07:58:45.778 +01:00 [INF] Executing endpoint 'HTTP: POST /api/imagegallery/upload => UploadImagesWithDetails'
+2024-01-15 07:58:45.880 +01:00 [INF] Setting HTTP status code 200.
+2024-01-15 07:58:45.881 +01:00 [INF] Executed endpoint 'HTTP: POST /api/imagegallery/upload => UploadImagesWithDetails'
+2024-01-15 07:58:45.915 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7293/api/imagegallery/upload multipart/form-data;+boundary=----WebKitFormBoundarywqRJknmW4DPYLfBC 518209 - 200 0 - 208.3130ms

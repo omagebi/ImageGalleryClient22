@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageGallery", "ImageGallery\ImageGallery.csproj", "{6CD898D4-7E3C-4C03-B51F-90A56A096219}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "..\..\DataAccess\DataAccessLibrary\DataAccess\DataAccess.csproj", "{F77B1596-5D22-4D7C-8A72-23FA6E1782BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CD898D4-7E3C-4C03-B51F-90A56A096219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD898D4-7E3C-4C03-B51F-90A56A096219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD898D4-7E3C-4C03-B51F-90A56A096219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD898D4-7E3C-4C03-B51F-90A56A096219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F77B1596-5D22-4D7C-8A72-23FA6E1782BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F77B1596-5D22-4D7C-8A72-23FA6E1782BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F77B1596-5D22-4D7C-8A72-23FA6E1782BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F77B1596-5D22-4D7C-8A72-23FA6E1782BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {743CA67B-A6A3-414F-B99E-4D42796C9E3C}
+	EndGlobalSection
+EndGlobal

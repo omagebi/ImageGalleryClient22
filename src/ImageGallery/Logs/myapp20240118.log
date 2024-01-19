@@ -1,0 +1,31 @@
+2024-01-18 11:29:20.895 +01:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-01-18 11:29:21.058 +01:00 [INF] Now listening on: https://localhost:7293
+2024-01-18 11:29:21.059 +01:00 [INF] Now listening on: http://localhost:5081
+2024-01-18 11:29:21.062 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-18 11:29:21.063 +01:00 [INF] Hosting environment: Development
+2024-01-18 11:29:21.063 +01:00 [INF] Content root path: C:\Users\Administrator\source\repos\ImageGallery2\ImageGalleryAPI2\ImageGallery
+2024-01-18 11:29:21.680 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2024-01-18 11:29:22.065 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/swagger-ui-standalone-preset.js - -
+2024-01-18 11:29:22.065 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/swagger-ui.css - -
+2024-01-18 11:29:22.066 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/swagger-ui-bundle.js - -
+2024-01-18 11:29:22.077 +01:00 [INF] The file /swagger-ui-bundle.js was not modified
+2024-01-18 11:29:22.077 +01:00 [INF] The file /swagger-ui.css was not modified
+2024-01-18 11:29:22.077 +01:00 [INF] The file /swagger-ui-standalone-preset.js was not modified
+2024-01-18 11:29:22.122 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/swagger-ui.css - - - 304 - text/css 55.3102ms
+2024-01-18 11:29:22.122 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/swagger-ui-bundle.js - - - 304 - text/javascript 54.6269ms
+2024-01-18 11:29:22.123 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/swagger-ui-standalone-preset.js - - - 304 - text/javascript 55.3086ms
+2024-01-18 11:29:22.123 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 446.1829ms
+2024-01-18 11:29:22.209 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2024-01-18 11:29:22.209 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2024-01-18 11:29:22.214 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 13760 application/javascript;+charset=utf-8 4.8382ms
+2024-01-18 11:29:22.253 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 43.7651ms
+2024-01-18 11:29:22.552 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2024-01-18 11:29:22.699 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 146.0869ms
+2024-01-18 11:32:04.470 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - -
+2024-01-18 11:32:04.477 +01:00 [INF] Executing endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-18 11:32:04.626 +01:00 [INF] Setting HTTP status code 200.
+2024-01-18 11:32:04.631 +01:00 [INF] Writing value of type '<>f__AnonymousType1`4' as Json.
+2024-01-18 11:32:04.663 +01:00 [INF] Executed endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-18 11:32:04.669 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 198.7320ms
+2024-01-18 11:38:03.921 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/Uploads/001-000000013/0005.jpg - -
+2024-01-18 11:38:03.939 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/Uploads/001-000000013/0005.jpg - - - 404 0 - 18.7296ms

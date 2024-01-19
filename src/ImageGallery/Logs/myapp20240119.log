@@ -1,0 +1,43 @@
+2024-01-19 11:55:43.748 +01:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-01-19 11:55:44.045 +01:00 [INF] Now listening on: https://localhost:7293
+2024-01-19 11:55:44.046 +01:00 [INF] Now listening on: http://localhost:5081
+2024-01-19 11:55:44.051 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-01-19 11:55:44.052 +01:00 [INF] Hosting environment: Development
+2024-01-19 11:55:44.053 +01:00 [INF] Content root path: C:\Users\Administrator\source\repos\ImageGallery2\ImageGalleryAPI2\ImageGallery
+2024-01-19 11:55:47.539 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/index.html - -
+2024-01-19 11:55:47.973 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - -
+2024-01-19 11:55:47.993 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_framework/aspnetcore-browser-refresh.js - - - 200 13760 application/javascript;+charset=utf-8 18.4994ms
+2024-01-19 11:55:48.033 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/index.html - - - 200 - text/html;charset=utf-8 500.0353ms
+2024-01-19 11:55:48.088 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/_vs/browserLink - -
+2024-01-19 11:55:48.204 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 116.8267ms
+2024-01-19 11:55:48.517 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - -
+2024-01-19 11:55:48.554 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - -
+2024-01-19 11:55:48.576 +01:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2024-01-19 11:55:48.578 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/favicon-32x32.png - - - 200 628 image/png 24.3291ms
+2024-01-19 11:55:48.690 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 172.6595ms
+2024-01-19 12:57:14.345 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - -
+2024-01-19 12:57:14.351 +01:00 [INF] Executing endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-19 12:57:14.520 +01:00 [INF] Setting HTTP status code 200.
+2024-01-19 12:57:14.524 +01:00 [INF] Writing value of type '<>f__AnonymousType1`4' as Json.
+2024-01-19 12:57:14.552 +01:00 [INF] Executed endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-19 12:57:14.560 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 214.7462ms
+2024-01-19 13:10:11.730 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - -
+2024-01-19 13:10:11.746 +01:00 [INF] Executing endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-19 13:10:20.009 +01:00 [INF] Setting HTTP status code 200.
+2024-01-19 13:10:20.036 +01:00 [INF] Writing value of type '<>f__AnonymousType1`4' as Json.
+2024-01-19 13:10:20.037 +01:00 [INF] Executed endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-19 13:10:20.049 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 8319.1450ms
+2024-01-19 13:24:24.314 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - -
+2024-01-19 13:24:24.361 +01:00 [INF] CORS policy execution successful.
+2024-01-19 13:24:24.365 +01:00 [INF] Executing endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-19 13:26:12.539 +01:00 [INF] Setting HTTP status code 200.
+2024-01-19 13:26:12.545 +01:00 [INF] Writing value of type '<>f__AnonymousType1`4' as Json.
+2024-01-19 13:26:12.549 +01:00 [INF] Executed endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-19 13:26:12.593 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 108279.0006ms
+2024-01-19 13:27:09.514 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - -
+2024-01-19 13:27:09.520 +01:00 [INF] CORS policy execution successful.
+2024-01-19 13:27:09.521 +01:00 [INF] Executing endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-19 13:27:09.526 +01:00 [INF] Setting HTTP status code 200.
+2024-01-19 13:27:09.527 +01:00 [INF] Writing value of type '<>f__AnonymousType1`4' as Json.
+2024-01-19 13:27:09.528 +01:00 [INF] Executed endpoint 'HTTP: GET /api/imagegallery/{id}/list => GetImageListById'
+2024-01-19 13:27:09.533 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7293/api/imagegallery/001%2F000000013/list?page=1&pageSize=10 - - - 200 - application/json;+charset=utf-8 18.3938ms
