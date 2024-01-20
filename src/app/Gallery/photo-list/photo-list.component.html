@@ -1,17 +1,22 @@
 
+<img alt="" src="https://localhost:7293/api/imagegallery/uploads/001000000013/0005.jpg" />
+<img alt="" src="/assets/img/0005.jpg" />
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-10 offset-md-1" >
-        <div class="grid-container" *ngIf="imageList">
-          <!-- <div *ngIf="imageList"> -->
-          <div *ngFor="let list of imageList; let i = index">
+    <input type="text" class="form-control mb-3"
+    placeholder="Enter Fullname"
+    (selectItem)="selectedItem($event.item)"
+    [ngbTypeahead]="service.search" />
+
+      <div class="grid-container" *ngIf="imageUrls">
+          <!-- <div *ngIf="imageUrls"> -->
+          <div *ngFor="let url of imageUrls; let i = index">
             <div  class="grid-item ">
-              <img alt="" [src]="imageList[i].imageUrl" class="img-fluid">
-              <!-- <span class="imagebox-desc">{{imageList[3*i].caption}}</span> -->
-            <!-- </div> -->
+              <img alt="" [src]="imageUrls[i].ImageURL" class="img-fluid">
+              <!-- <span class="imagebox-desc">{{imageUrls[3*i].PNo}}</span> -->
           </div>
-          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -19,32 +24,32 @@
 
   <!-- <div class="container-fluid"> -->
     <!-- <div class="grid-container">
-      <div *ngIf="imageList">
-        <div *ngFor="let list of imageList; let i = index">
+      <div *ngIf="imageUrls">
+        <div *ngFor="let url of imageUrls; let i = index">
           <div  class="grid-item">
-            <img [src]="imageList[i].imageUrl" class="img-fluid">
+            <img [src]="imageUrls[i].imageUrl" class="img-fluid">
           </div>
         </div>
       </div>
     </div> -->
   <!-- </div> -->
 
-<!-- <table *ngIf="imageList">
+<!-- <table *ngIf="imageUrls">
   <tr *ngFor="let i of rowIndexArray">
     <td>
       <div class="imagebox">
-        <img [src]="imageList[3*i].imageUrl" class="img-fluid">
-        <span class="imagebox-desc">{{imageList[3*i].caption}}</span>
+        <img [src]="imageUrls[3*i].imageUrl" class="img-fluid">
+        <span class="imagebox-desc">{{imageUrls[3*i].caption}}</span>
       </div>
     </td>
-    <td *ngIf="imageList[3*i+1]">
+    <td *ngIf="imageUrls[3*i+1]">
       <div class="imagebox">
-        <img [src]="imageList[3*i+1].imageUrl" class="img-fluid">
+        <img [src]="imageUrls[3*i+1].imageUrl" class="img-fluid">
       </div>
     </td>
-    <td  *ngIf="imageList[3*i+2]">
+    <td  *ngIf="imageUrls[3*i+2]">
       <div class="imagebox">
-        <img [src]="imageList[3*i+2].imageUrl" class="img-fluid">
+        <img [src]="imageUrls[3*i+2].imageUrl" class="img-fluid">
       </div>
     </td>
   </tr>
@@ -53,7 +58,7 @@
 
 <!-- original -->
 
-<!-- <table *ngIf="imageList">
+<!-- <table *ngIf="imageUrls">
   <tr *ngFor="let i of rowIndexArray">
     <td>
       <div class="imagebox" *ngIf="i==0">
@@ -63,20 +68,20 @@
         </a>
       </div>
       <div class="imagebox" *ngIf="i!=0">
-        <img [src]="imageList[3*i-1].imageUrl" class="img-fluid">
-        <span class="imagebox-desc">{{imageList[3*i-1].caption}}</span>
+        <img [src]="imageUrls[3*i-1].imageUrl" class="img-fluid">
+        <span class="imagebox-desc">{{imageUrls[3*i-1].caption}}</span>
       </div>
     </td>
-    <td *ngIf="imageList[3*i]">
+    <td *ngIf="imageUrls[3*i]">
       <div class="imagebox">
-        <img [src]="imageList[3*i].imageUrl" class="img-fluid">
-        <span class="imagebox-desc">{{imageList[3*i].caption}}</span>
+        <img [src]="imageUrls[3*i].imageUrl" class="img-fluid">
+        <span class="imagebox-desc">{{imageUrls[3*i].caption}}</span>
       </div>
     </td>
-    <td *ngIf="imageList[3*i+1]">
+    <td *ngIf="imageUrls[3*i+1]">
       <div class="imagebox">
-        <img [src]="imageList[3*i+1].imageUrl" class="img-fluid">
-        <span class="imagebox-desc">{{imageList[3*i+1].caption}}</span>
+        <img [src]="imageUrls[3*i+1].imageUrl" class="img-fluid">
+        <span class="imagebox-desc">{{imageUrls[3*i+1].caption}}</span>
       </div>
     </td>
   </tr>

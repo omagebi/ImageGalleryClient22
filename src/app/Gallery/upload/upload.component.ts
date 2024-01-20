@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 @UntilDestroy()
 @Component({
   selector: 'app-upload',
-standalone: true,
+  standalone: true,
   imports: [NgbTypeaheadModule,
     ReactiveFormsModule,
     CommonModule],

@@ -29,14 +29,14 @@ export class PhotoService {
   firebase: any;
 
   appURL = environment.appURL; //'https://localhost:7293/api/imagegallery' //
-  baseUrl = `${environment.appURL}/Upload2`;
+  baseUrl = `${environment.appURL}/uploads`;
 
     getLinksByID(id: string,page: number=1,pageSize: number=10): Observable<IFullName[]> {
       id = encodeURIComponent(id);
       const url = `https://localhost:7293/api/imagegallery/${id}/list?page=${page}&pageSize=${pageSize}`;
       return this.http.get<IResult>(url).pipe(
         tap(res => console.log(res)),
-        map(resp => resp.results)  //.map(result => result.ImageURL + ' [' +  result.PNo.replace('/','-') + ']' )
+        map(resp => resp.results)
     );
   }
 
