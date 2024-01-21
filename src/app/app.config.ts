@@ -21,6 +21,7 @@ export const environment = {
   // production: false,
   versionCheckURL: 'assets/version.json',
   appURL: 'https://localhost:7293/api/imagegallery',
+  imageURL: 'https://localhost:7293',
   // appURL: 'https://localhost:7118/api/clearing',
   // apiURL_Admin: 'http://localhost:5000/api/authenticate', //http://localhost:5000/api',
   apiURL_Admin: 'http://localhost:8082/api/authenticate', //http://localhost:5000/api',
