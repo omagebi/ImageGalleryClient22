@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, OperatorFunction, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @UntilDestroy()
 @Component({
@@ -33,7 +34,8 @@ export class UploadComponent  implements OnInit {
 
    constructor(
      public service: PhotoService,
-     private http: HttpClient ) {}
+     private http: HttpClient,
+     private router: Router) { }
 
   ngOnInit() {
     this.resetForm();
@@ -173,7 +175,9 @@ export class UploadComponent  implements OnInit {
         // }
 
         this.service.insertImageDetails(payload).subscribe((res) => {
-        this.resetForm();
+          this.resetForm();
+          // Handle the response, and navigate to the route on success
+          this.router.navigate(['/image',idPart, 'list']);
         });
 
      // const fileRef = this.storage.ref(filePath);

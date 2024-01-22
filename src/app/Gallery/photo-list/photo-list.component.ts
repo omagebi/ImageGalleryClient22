@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { IFullName, PhotoService } from '../photo.service';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NgIf, NgFor } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, Subscription, of } from 'rxjs';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 
 @UntilDestroy()
 @Component({
@@ -17,13 +18,30 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     providers: [PhotoService]
 
 })
-export class PhotoListComponent implements OnInit {
+export class PhotoListComponent implements OnInit, OnDestroy {
 
   imageUrls: IFullName[] = [];
+  imageUrls2: any[] = [];
   imageUrls$: Observable<IFullName[]>= of([]); // Initialize with an empty array
-  id = ''  //'001/000000013';
+  subscr?: Subscription
 
-  constructor(public service: PhotoService) { }
+  constructor(public service: PhotoService,
+    private router: ActivatedRoute) { }
+
+
+  ngOnDestroy(): void {
+    this.subscr?.unsubscribe();
+  }
+
+  ngOnInit() {
+    this.subscr = this.router.paramMap.subscribe(param => {
+      const id = param.get('id');
+      if (id === '' || id === undefined || id === null || id === '00') {
+        return;
+      }
+      this.getImageurls(id);
+    });
+  }
 
   selectedItem(fullName: string) {
      // Check if fullName is ''
@@ -55,31 +73,23 @@ export class PhotoListComponent implements OnInit {
 
   }
 
-  getImageurls(idX: string) {
+   getImageurls(idX: string) {
     if (idX == '' || idX == undefined) {
       return;
     }
-    idX=idX.replace('-','/')
-    this.service.getLinksByID(idX).subscribe(
-      (data) => {
-        this.imageUrls = data;
-      },
-      (error) => {
-        console.error('Error fetching photos', error);
-      }
-    );
-
-  }
-
-  ngOnInit() {
-    if (this.id == '' || this.id == undefined) {
-      return;
+    idX = idX.replace('-', '/')
+    try {
+      this.service.getLinksByID(idX).subscribe(
+        (data) => {
+          this.imageUrls = data;
+        },
+        (error) => {
+          console.error('Error fetching photos', error);
+        }
+      );
+    } catch (error) {
+      console.error('Error fetching records', error);
     }
-    this.getImageurls(this.id);
-
-
-
-
   }
 
 

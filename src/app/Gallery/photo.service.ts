@@ -34,7 +34,7 @@ export class PhotoService {
     getLinksByID(id: string,page: number=1,pageSize: number=10): Observable<IFullName[]> {
       id = encodeURIComponent(id);
       const url = `https://localhost:7293/api/imagegallery/${id}/list?page=${page}&pageSize=${pageSize}`;
-      return this.http.get<IResult>(url).pipe(
+      return  this.http.get<IResult>(url).pipe(
         tap(res => console.log(res)),
         map(resp => resp.results.map<IFullName>((data: IFullName) => ({
             FullName: data.FullName,
