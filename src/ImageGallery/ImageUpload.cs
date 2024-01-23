@@ -106,7 +106,7 @@ namespace ImageGallery
             }
         }
 
-        private static async Task<IResult> GetImageListById(IServicesData<dynamic> data, string Id, int page = 1, int pageSize = 10)
+        private static async Task<IResult> GetImageListById(IServicesData<ImageURL> data, string Id, int page = 1, int pageSize = 10)
         {
             try
             {
@@ -122,8 +122,8 @@ namespace ImageGallery
                 var results = await data.GetAll(sql, _commandType, p);
 
                 // Retrieve total count for pagination
-                var totalCountSql = $@"select count(*) as total_count from vwhPatientsImageURL where PNo = @PNo";
-                var totalCount = (int)(await data?.GetById(totalCountSql, 0, _commandType, p)).total_count;
+                var totalCountSql = $@"select count(*) as TotalCount from vwhPatientsImageURL where PNo = @PNo";
+                var totalCount = (await data?.GetById(totalCountSql, 0, _commandType, p)).TotalCount;
 
                 //WatchLogger.Log($"creating response for frontend");
                 //_logger.LogError($"creating response for frontend");
@@ -167,14 +167,18 @@ namespace ImageGallery
 
             try
             {
+                string PNoX;
                 // Check if the context.Request is null
                 if (context != null)
                 {
                     // Retrieve additional fields
                     string? fullName = context.Request.Form["fullname"];
                     string? category = context.Request.Form["category"];
-                    string? PNo = context.Request.Form["imageURL"];
                     string? remarks = context.Request.Form["remarks"];
+
+                    string? PNo = context.Request.Form["imageURL"];
+                    PNoX = PNo.Replace("-", "/");
+
 
                     var files = context.Request.Form.Files;
 
@@ -194,6 +198,8 @@ namespace ImageGallery
 
                             if (System.IO.File.Exists(filePath))
                                 System.IO.File.Delete(filePath);
+                                // delete row in db here
+
 
                             using (FileStream stream = System.IO.File.Create(filePath))
                             {
@@ -244,6 +250,11 @@ namespace ImageGallery
                     // You can also return a specific error response
                     return Results.Problem("HttpContext.Request is null");
                 }
+
+                //https://chat.openai.com/c/dd1cdcaf-6a51-491d-8663-1fbd0b648ed0          
+                // Return the image details along with a success response
+                //var imageList = await GetImageListById(_dbAccess, PNoX);
+                return Results.Ok(await GetImageListById(_dbAccess, PNoX));
             }
             catch (Exception ex)
             {
@@ -253,8 +264,8 @@ namespace ImageGallery
                 // You can also handle the exception differently, e.g., return a specific error response
                 return Results.Problem($"Error processing file upload request: {ex.Message}");
             }
-
-            return Results.Ok();
+            
+            //return Results.Ok(); // moved inside try block
         }
 
         private static async Task<IResult> SaveImageDetailsToDatabase(IServicesData<ImageURL>? _dbAccess, string category, string PNo, string remarks, string fileName)
@@ -323,18 +334,18 @@ namespace ImageGallery
 
                 PNo = PNo.Replace("-", "/");
                 var p = new { PNo };  //same as { PNo = PNo }
-                //var result = await GetImageCodeAsName(PNo, _dbAccess);
-                //var sql = @"select MAX(CAST(SUBSTRING(ImageURL, 15, 4) AS BIGINT)) as ImageUrl from hPatientsImageURL where PNo=@PNo";
-                //var sql = @"select MAX(SUBSTRING(ImageURL, 15, 4)) as ImageUrl from hPatientsImageURL where PNo=@PNo;";
-                //var sql = @"select MAX(CAST(SUBSTRING(ImageURL, 15, 4) AS BIGINT)) as ImageUrl from hPatientsImageURL";
+                //var sql = @"select MAX(CAST(SUBSTRING(ImageURL, 24, 4) AS BIGINT)) as ImageUrl from hPatientsImageURL";
+                //var sql = @"select MAX(SUBSTRING(ImageURL, 24, 4)) as ImageUrl from hPatientsImageURL where PNo=@PNo;";
+                //var sql = @"SELECT TOP 1 * FROM hPatientsImageURL WHERE PNo = @PNo ORDER BY SNo DESC";
+                //var sql = @"SELECT TOP 1 * FROM hPatientsImageURL WHERE PNo = @PNo ORDER BY SNo DESC";
 
-                var sql = @"SELECT TOP 1 * FROM hPatientsImageURL WHERE PNo = @PNo ORDER BY SNo DESC";
+                var sql = @"select MAX(CAST(SUBSTRING(ImageURL, 24, 4) AS BIGINT)) as ImageUrl from hPatientsImageURL where PNo=@PNo";
                 var result = await _dbAccess.GetById(sql, PNo, _commandType, p);
                 if (result?.ImageUrl == "" || result?.ImageUrl == null) return $"0001{extension}";   //result.ImageUrl = "0000"; 
                 //Console.WriteLine(results.CatCode);
                 //return results.ImageUrl;
 
-                var pixCode = result.ImageUrl.Substring(23, 4).ToString();
+                var pixCode = result.ImageUrl;  //.Substring(23, 4).ToString();
                 if (pixCode != null)
                 {
                     //var intCode2 = pixCode.SubString(0, 3) + (Convert.ToInt32(catCode.Substring(3)) + 1).ToString("000");

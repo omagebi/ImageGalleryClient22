@@ -1,10 +1,12 @@
 using DataAccess.DbAccess;
 using DataAccess.Services;
 using ImageGallery;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using System.Configuration;
+using System.Net.NetworkInformation;
 using WatchDog;
 using WatchDog.src.Enums;
 
@@ -53,6 +55,24 @@ builder.Services.AddCors(); // Make sure you call this previous to AddMvc
 //builder.Services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 
 var app = builder.Build();
+
+//app.UseStaticFiles();
+
+//Using absolute paths provides a more predictable way to reference files
+//cant i use webroot or contentRoot path
+//https://chat.openai.com/c/8eaa8395-4dd7-4c5f-b5cf-0ecaaca04118
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(@"C:\YourProject\Images"),
+//    RequestPath = "/Images"
+//});
+
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Uploads")),
+        RequestPath = "/Uploads"
+    });
+
 
 // Make sure you call this before calling app.UseMvc()
 app.UseCors(options => options

@@ -1,0 +1,254 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "Dapper/1.50.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HelperLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win": {
+      "Dapper/1.50.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HelperLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-arm64": {
+      "Dapper/1.50.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HelperLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x64": {
+      "Dapper/1.50.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HelperLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x86": {
+      "Dapper/1.50.5": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "System",
+          "System.Data",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net451/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "HelperLibrary/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HelperLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Dapper/1.50.5": {
+      "sha512": "1vPpX7WQmQCIb7rwlGOUoVs/yWZhVKvdhuG7WrJV+V+qsP8btnrrCqVWHENAlJxBAnUw5rhWfmuba9/Egei9MA==",
+      "type": "package",
+      "path": "dapper/1.50.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dapper.1.50.5.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net451/Dapper.dll",
+        "lib/net451/Dapper.xml",
+        "lib/netstandard1.3/Dapper.dll",
+        "lib/netstandard1.3/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "HelperLibrary/1.0.0": {
+      "type": "project",
+      "path": "../HelperLibrary/HelperLibrary.csproj",
+      "msbuildProject": "../HelperLibrary/HelperLibrary.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "Dapper >= 1.50.5",
+      "HelperLibrary >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\AdvancedDapperTimCorey\\Demo2_AdvancedDapper\\Demo2_AdvancedDapper.csproj",
+      "projectName": "Demo2_AdvancedDapper",
+      "projectPath": "C:\\Users\\Administrator\\source\\repos\\AdvancedDapperTimCorey\\Demo2_AdvancedDapper\\Demo2_AdvancedDapper.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administrator\\source\\repos\\AdvancedDapperTimCorey\\Demo2_AdvancedDapper\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {
+            "C:\\Users\\Administrator\\source\\repos\\AdvancedDapperTimCorey\\HelperLibrary\\HelperLibrary.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\source\\repos\\AdvancedDapperTimCorey\\HelperLibrary\\HelperLibrary.csproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "dependencies": {
+          "Dapper": {
+            "target": "Package",
+            "version": "[1.50.5, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-arm64": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

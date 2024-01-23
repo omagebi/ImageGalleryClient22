@@ -7,6 +7,7 @@
         public string ImageUrl { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
         public string Remarks { get; set; } = string.Empty;
+        public int TotalCount  { get;}=0;
 
     }
 

@@ -23,4 +23,8 @@
     <ProjectReference Include="..\..\..\DataAccess\DataAccessLibrary\DataAccess\DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "VLxKj8dlWqH43gzZwokZdO7gxfIaLJMqAhdP69lA4hsmBNvB4MBtBxRF0XhLEdc1VBh5/5ZrxYTIvY2ay7kCFQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\AdvancedDapperTimCorey\\Demo2_AdvancedDapper\\Demo2_AdvancedDapper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\dapper\\1.50.5\\dapper.1.50.5.nupkg.sha512"
+  ],
+  "logs": []
+}
