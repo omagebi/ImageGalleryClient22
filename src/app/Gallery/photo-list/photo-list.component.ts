@@ -23,18 +23,18 @@ export class PhotoListComponent implements OnInit, OnDestroy {
   imageUrls: IFullName[] = [];
   imageUrls2: any[] = [];
   imageUrls$: Observable<IFullName[]>= of([]); // Initialize with an empty array
-  subscr?: Subscription
+  subscription?: Subscription
 
   constructor(public service: PhotoService,
     private router: ActivatedRoute) { }
 
 
   ngOnDestroy(): void {
-    this.subscr?.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 
   ngOnInit() {
-    this.subscr = this.router.paramMap.subscribe(param => {
+    this.subscription = this.router.paramMap.subscribe(param => {
       const id = param.get('id');
       if (id === '' || id === undefined || id === null || id === '00') {
         return;
