@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { IFullName, PhotoService } from '../photo.service';
+import { IFullName, IFullName2, PhotoService } from '../photo.service';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NgIf, NgFor } from '@angular/common';
@@ -20,7 +20,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PhotoListComponent implements OnInit, OnDestroy {
 
-  imageUrls: IFullName[] = [];
   imageUrls2: any[] = [];
   imageUrls$: Observable<IFullName[]>= of([]); // Initialize with an empty array
   subscription?: Subscription
@@ -39,7 +38,10 @@ export class PhotoListComponent implements OnInit, OnDestroy {
       if (id === '' || id === undefined || id === null || id === '00') {
         return;
       }
-      this.getImageurls(id);
+      // !this.service.isUploaded && this.getImageurls(id);
+      if (this.service.isUploaded === false) {
+        this.getImageurls(id);
+      }
     });
   }
 
@@ -81,7 +83,7 @@ export class PhotoListComponent implements OnInit, OnDestroy {
     try {
       this.service.getLinksByID(idX).subscribe(
         (data) => {
-          this.imageUrls = data;
+          this.service.imageUrls = data;
         },
         (error) => {
           console.error('Error fetching photos', error);

@@ -11,8 +11,21 @@ export interface IFullName {
   ImageURL: string;
 }
 
+export interface IFullName2 {
+  fullName: string;
+  pNo: string;
+  imageUrl: string;
+}
+
 export interface IResult{
   results: IFullName[];
+  totalCount: number;
+  currentPage: number;
+  pageSize: number
+}
+
+export interface IResult2{
+  results: IFullName2[];
   totalCount: number;
   currentPage: number;
   pageSize: number
@@ -24,23 +37,28 @@ export interface IResult{
 })
 export class PhotoService {
   constructor(private router: Router, private http: HttpClient) {}
-
+  isUploaded: boolean = false;
+  imageUrls: IFullName2[] = [];
   imageDetailList: any;
   firebase: any;
 
     appURL = environment.appURL; //'https://localhost:7293/api/imagegallery' //
     baseImageUrl = `${environment.imageURL}`;
 
-    getLinksByID(id: string,page: number=1,pageSize: number=10): Observable<IFullName[]> {
+    getLinksByID(id: string,page: number=1,pageSize: number=10): Observable<IFullName2[]> {
       id = encodeURIComponent(id);
       const url = `https://localhost:7293/api/imagegallery/${id}/list?page=${page}&pageSize=${pageSize}`;
-      return  this.http.get<IResult>(url).pipe(
+      return  this.http.get<IResult2>(url).pipe(
         tap(res => console.log(res)),
-        map(resp => resp.results.map<IFullName>((data: IFullName) => ({
-            FullName: data.FullName,
-            ImageURL: data.ImageURL = `${this.baseImageUrl}${data.ImageURL}`,
-            PNo: data.PNo
-          })))
+        map(resp => resp.results.map<IFullName2>((data: IFullName2) =>
+        {
+          return ({
+            fullName: data.fullName,
+            imageUrl: `${this.baseImageUrl}${data.imageUrl}`,
+            pNo: data.pNo
+          })
+          }
+        ))
       );
 
     }

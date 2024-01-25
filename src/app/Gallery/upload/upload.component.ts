@@ -175,9 +175,13 @@ export class UploadComponent  implements OnInit {
         // }
 
         this.service.insertImageDetails(payload).subscribe((res) => {
+          this.service.isUploaded = true;
+          this.service.imageUrls = res;
           this.resetForm();
           // Handle the response, and navigate to the route on success
-          this.router.navigate(['/image',idPart, 'list']);
+          this.router.navigate(['/image', idPart, 'list']);
+          this.service.isUploaded = false;
+
         });
 
      // const fileRef = this.storage.ref(filePath);
