@@ -45,7 +45,63 @@ export class PhotoService {
     appURL = environment.appURL; //'https://localhost:7293/api/imagegallery' //
     baseImageUrl = `${environment.imageURL}`;
 
+
+  insertImageDetails(formData: FormData) {
+    const headers = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json' //'multipart/form-data'
+      })
+    }
+
+    return this.http.post<any>(this.appURL + '/upload',
+      formData,
+      // {
+      //   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      //   reportProgress: true,
+      //    observe: 'events',
+      //   responseType: 'json',
+      // }
+    );
+
+  //  const requestUrl = environment.apiUrl + 'parking' ;
+  //   const headerOptions = new HttpHeaders();
+  //   headerOptions.set('Content-Type', 'application/json');
+  //   return this.http.post(requestUrl, parking, { headers: headerOptions })
+
+  }
+
+
     getLinksByID(id: string,page: number=1,pageSize: number=10): Observable<IFullName2[]> {
+      id = encodeURIComponent(id);
+      const url = `https://localhost:7293/api/imagegallery/${id}/list?page=${page}&pageSize=${pageSize}`;
+      return  this.http.get<IResult2>(url).pipe(
+        tap(res => console.log(res)),
+        map(resp => this.getFullLinks(resp) )
+      );
+
+    }
+
+    getFullLinks(resp: IResult2): IFullName2[] {
+
+    // Update imageUrl for each result in the array
+    const updatedResults = resp.results.map(result => {
+      return {
+        ...result,
+        imageUrl: this.baseImageUrl + result.imageUrl
+      };
+    });
+
+    return updatedResults;
+  }
+
+
+  getLinksXXX(resp: IResult2): IFullName2[] {
+    return resp.results;
+
+  }
+
+
+    getLinksByID2(id: string,page: number=1,pageSize: number=10): Observable<IFullName2[]> {
       id = encodeURIComponent(id);
       const url = `https://localhost:7293/api/imagegallery/${id}/list?page=${page}&pageSize=${pageSize}`;
       return  this.http.get<IResult2>(url).pipe(
@@ -104,29 +160,6 @@ export class PhotoService {
     return this.http.get<Photo[]>(this.appURL);
   }
 
-  insertImageDetails(formData: FormData) {
-    const headers = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json' //'multipart/form-data'
-      })
-    }
-
-    return this.http.post<any>(this.appURL + '/upload',
-      formData,
-      // {
-      //   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      //   reportProgress: true,
-      //    observe: 'events',
-      //   responseType: 'json',
-      // }
-    );
-
-  //  const requestUrl = environment.apiUrl + 'parking' ;
-  //   const headerOptions = new HttpHeaders();
-  //   headerOptions.set('Content-Type', 'application/json');
-  //   return this.http.post(requestUrl, parking, { headers: headerOptions })
-
-  }
 
   getImageDetailListX() {
     this.imageDetailList = this.firebase.list('imageDetails');

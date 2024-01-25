@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { catchError, debounceTime, distinctUntilChanged, filter, finalize, map, switchMap, tap } from 'rxjs/operators';
-import { Photo, PhotoService } from '../photo.service';
+import { IFullName2, Photo, PhotoService } from '../photo.service';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CommonModule } from '@angular/common';
@@ -174,14 +174,16 @@ export class UploadComponent  implements OnInit {
         //   payload.append('Photo', this.selectedImage[i], this.selectedImage[i].name);
         // }
 
-        this.service.insertImageDetails(payload).subscribe((res) => {
+      this.service.insertImageDetails(payload).pipe(
+          tap(res => console.log(res))
+        ).subscribe((res) => {
           this.service.isUploaded = true;
-          this.service.imageUrls = res;
+          this.service.imageUrls = res.results as IFullName2[];
           this.resetForm();
           // Handle the response, and navigate to the route on success
           this.router.navigate(['/image', idPart, 'list']);
           this.service.isUploaded = false;
-
+          // this.toastr.success('Image details added successfully!');
         });
 
      // const fileRef = this.storage.ref(filePath);
