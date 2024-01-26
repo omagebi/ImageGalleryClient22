@@ -46,7 +46,7 @@ export class PhotoService {
     baseImageUrl = `${environment.imageURL}`;
 
 
-  insertImageDetails(formData: FormData) {
+  insertImageDetailsXXX(formData: FormData) {
     const headers = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json' //'multipart/form-data'
@@ -62,26 +62,33 @@ export class PhotoService {
       //   responseType: 'json',
       // }
     );
-
-  //  const requestUrl = environment.apiUrl + 'parking' ;
-  //   const headerOptions = new HttpHeaders();
-  //   headerOptions.set('Content-Type', 'application/json');
-  //   return this.http.post(requestUrl, parking, { headers: headerOptions })
+      //  const requestUrl = environment.apiUrl + 'parking' ;
+      //   const headerOptions = new HttpHeaders();
+      //   headerOptions.set('Content-Type', 'application/json');
+      //   return this.http.post(requestUrl, parking, { headers: headerOptions })
 
   }
 
-
-    getLinksByID(id: string,page: number=1,pageSize: number=10): Observable<IFullName2[]> {
-      id = encodeURIComponent(id);
-      const url = `https://localhost:7293/api/imagegallery/${id}/list?page=${page}&pageSize=${pageSize}`;
-      return  this.http.get<IResult2>(url).pipe(
+  insertImageDetailsYYY(formData: FormData): Observable<IFullName2[]> {
+      const results$ = this.http.post<IResult2>(this.appURL + '/upload',formData)
+      return results$.pipe(
         tap(res => console.log(res)),
-        map(resp => this.getFullLinks(resp) )
+        map(resp => resp ? this.getFullUrl(resp) : [])
       );
 
-    }
+  }
 
-    getFullLinks(resp: IResult2): IFullName2[] {
+  insertImageDetails(formData: FormData): Observable<IResult2> {
+    return this.http.post<IResult2>(this.appURL + '/upload', formData)
+      // .pipe(
+      //   tap(res => console.log(res)),
+      //   map(resp => resp ? this.getFullUrl(resp) : [])
+      // );
+  }
+
+
+
+    getFullUrl(resp: IResult2): IFullName2[] {
 
     // Update imageUrl for each result in the array
     const updatedResults = resp.results.map(result => {
@@ -90,9 +97,28 @@ export class PhotoService {
         imageUrl: this.baseImageUrl + result.imageUrl
       };
     });
-
     return updatedResults;
   }
+
+  getFullUrl222(resp: IResult2): IFullName2[] {
+    // Update imageUrl for each result in the array
+    return resp.results.map(result => ({
+        ...result,
+        imageUrl: this.baseImageUrl + result.imageUrl
+    }));
+}
+
+  getLinksByID(id: string,page: number=1,pageSize: number=10): Observable<IFullName2[]> {
+    id = encodeURIComponent(id);
+    const url = `https://localhost:7293/api/imagegallery/${id}/list?page=${page}&pageSize=${pageSize}`;
+    return  this.http.get<IResult2>(url).pipe(
+      tap(res => console.log(res)),
+      map(resp => this.getFullUrl(resp) )
+    );
+
+  }
+
+
 
 
   getLinksXXX(resp: IResult2): IFullName2[] {

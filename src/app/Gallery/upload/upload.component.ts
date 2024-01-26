@@ -174,15 +174,18 @@ export class UploadComponent  implements OnInit {
         //   payload.append('Photo', this.selectedImage[i], this.selectedImage[i].name);
         // }
 
-      this.service.insertImageDetails(payload).pipe(
-          tap(res => console.log(res))
-        ).subscribe((res) => {
-          this.service.isUploaded = true;
+      this.service.insertImageDetails(payload).subscribe((res) => {
+          // this.service.isUploaded = true;
           this.service.imageUrls = res.results as IFullName2[];
+        if (res.results == undefined) {
+          this.service.isUploaded = false;
+        } else {
+          this.service.isUploaded = true;
+        }
           this.resetForm();
           // Handle the response, and navigate to the route on success
           this.router.navigate(['/image', idPart, 'list']);
-          this.service.isUploaded = false;
+          // this.service.isUploaded = false;
           // this.toastr.success('Image details added successfully!');
         });
 
