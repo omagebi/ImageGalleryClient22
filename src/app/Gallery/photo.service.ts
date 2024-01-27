@@ -45,6 +45,9 @@ export class PhotoService {
     appURL = environment.appURL; //'https://localhost:7293/api/imagegallery' //
     baseImageUrl = `${environment.imageURL}`;
 
+  setUploadValue(value: boolean) {
+    this.isUploaded = value;
+  }
 
   insertImageDetailsXXX(formData: FormData) {
     const headers = {
@@ -78,18 +81,15 @@ export class PhotoService {
 
   }
 
-  insertImageDetails(formData: FormData): Observable<IResult2> {
+  insertImageDetails(formData: FormData): Observable<IFullName2[]> {
     return this.http.post<IResult2>(this.appURL + '/upload', formData)
-      // .pipe(
-      //   tap(res => console.log(res)),
-      //   map(resp => resp ? this.getFullUrl(resp) : [])
-      // );
+      .pipe(
+        tap(res => console.log(res)),
+        map(resp => resp ? this.getFullUrl(resp) : [])
+      );
   }
 
-
-
     getFullUrl(resp: IResult2): IFullName2[] {
-
     // Update imageUrl for each result in the array
     const updatedResults = resp.results.map(result => {
       return {

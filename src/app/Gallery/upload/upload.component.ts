@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
   imports: [NgbTypeaheadModule,
     ReactiveFormsModule,
     CommonModule],
-  providers: [PhotoService,HttpClient],
+  providers: [],
   templateUrl: './upload.component.html',
   styleUrl: './upload.component.css'
 })
@@ -176,11 +176,11 @@ export class UploadComponent  implements OnInit {
 
       this.service.insertImageDetails(payload).subscribe((res) => {
           // this.service.isUploaded = true;
-          this.service.imageUrls = res.results as IFullName2[];
-        if (res.results == undefined) {
-          this.service.isUploaded = false;
+          this.service.imageUrls = res as IFullName2[];
+        if (res == undefined) {
+          this.service.setUploadValue(false);
         } else {
-          this.service.isUploaded = true;
+          this.service.setUploadValue(true);
         }
           this.resetForm();
           // Handle the response, and navigate to the route on success

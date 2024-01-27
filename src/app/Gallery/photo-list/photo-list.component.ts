@@ -3,7 +3,7 @@ import { IFullName, IFullName2, PhotoService } from '../photo.service';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NgIf, NgFor } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { Observable, Subscription, of } from 'rxjs';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
@@ -14,8 +14,8 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './photo-list.component.html',
     styleUrls: ['./photo-list.component.css'],
     standalone: true,
-    imports: [NgbTypeaheadModule,NgIf, NgFor, HttpClientModule],
-    providers: [PhotoService]
+    imports: [NgbTypeaheadModule,NgIf, NgFor],
+    providers: []
 
 })
 export class PhotoListComponent implements OnInit, OnDestroy {
@@ -38,10 +38,12 @@ export class PhotoListComponent implements OnInit, OnDestroy {
       if (id === '' || id === undefined || id === null || id === '00') {
         return;
       }
-      // !this.service.isUploaded && this.getImageurls(id);
       if (this.service.isUploaded === false) {
         this.getImageurls(id);
       }
+      // else {
+      //   console.log(this.service.imageUrls);
+      // }
     });
   }
 

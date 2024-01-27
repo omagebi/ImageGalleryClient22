@@ -6,9 +6,10 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideServiceWorker } from '@angular/service-worker';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
+import { PhotoService } from './Gallery/photo.service';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),
+  providers: [PhotoService,provideRouter(routes),
     provideHttpClient(withFetch()),
     provideClientHydration(),
     provideServiceWorker('ngsw-worker.js', {
