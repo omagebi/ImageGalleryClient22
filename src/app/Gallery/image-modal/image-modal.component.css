@@ -1,0 +1,32 @@
+/* styles.css */
+
+/* Image Gallery Component Styles */
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-list img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* Image Modal Component Styles */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+/* Carousel Image Styles */
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+}

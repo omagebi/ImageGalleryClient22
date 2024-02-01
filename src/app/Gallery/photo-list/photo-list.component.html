@@ -15,7 +15,7 @@
       <div class="grid-container" *ngIf="service.imageUrls">
           <div *ngFor="let url of service.imageUrls; let i = index">
             <div  class="grid-item ">
-              <img alt="" [src]="service.imageUrls[i].imageUrl" class="img-fluid">
+              <img alt="" [src]="service.imageUrls[i].imageUrl"  (click)="openImageModal(url.imageUrl)" class="img-fluid">
               <!-- <span class="imagebox-desc">{{service.imageUrls[3*i].PNo}}</span> -->
           </div>
         </div>

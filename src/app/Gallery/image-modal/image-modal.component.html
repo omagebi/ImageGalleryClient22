@@ -1,0 +1,16 @@
+
+
+<div class="modal-header">
+  <h4 class="modal-title">Image Viewer</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <ngb-carousel *ngIf="imageList.length > 1">
+    <ng-template ngbSlide *ngFor="let image of imageList">
+      <img [src]="image" class="img-fluid" alt="Image">
+    </ng-template>
+  </ngb-carousel>
+  <img *ngIf="imageList.length === 1" [src]="selectedImage" class="img-fluid" alt="Image">
+</div>

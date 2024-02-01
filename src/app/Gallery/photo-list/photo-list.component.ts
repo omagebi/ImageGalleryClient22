@@ -5,8 +5,9 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NgIf, NgFor } from '@angular/common';
 // import { HttpClientModule } from '@angular/common/http';
 import { Observable, Subscription, of } from 'rxjs';
-import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
+import { ImageModalComponent } from '../image-modal/image-modal.component';
 
 @UntilDestroy()
 @Component({
@@ -25,8 +26,13 @@ export class PhotoListComponent implements OnInit, OnDestroy {
   subscription?: Subscription
 
   constructor(public service: PhotoService,
-    private router: ActivatedRoute) { }
+    private router: ActivatedRoute, private modalService: NgbModal) { }
 
+    openImageModal(selectedImage: string) {
+    const modalRef = this.modalService.open(ImageModalComponent, { size: 'lg' });
+    modalRef.componentInstance.selectedImage = selectedImage;
+    modalRef.componentInstance.imageList = this.imageUrls2;
+  }
 
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
@@ -46,6 +52,8 @@ export class PhotoListComponent implements OnInit, OnDestroy {
       // }
     });
   }
+
+
 
   selectedItem(fullName: string) {
      // Check if fullName is ''
